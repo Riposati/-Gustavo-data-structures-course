@@ -46,8 +46,10 @@ LinkedList *deleteNode(LinkedList *firstNode, int key){
                 free(aux);
                 firstNode = NULL;
             }else{ // more than 1 node in the list
+                aux2 = firstNode;
                 firstNode = firstNode->next; // first node = second node
-                aux->next = firstNode; // next from the last node = new first
+                aux->next = firstNode; // next from the last node = new firstNode
+                free(aux2); // remove from memory old firstNode
             }
         }else{
 
