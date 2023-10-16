@@ -7,10 +7,10 @@ int count = 0;
 int recursiveFibonacci(long long unsigned *cache, int n)
 {
     count++;
-	if (cache[n] == -1) {
-		cache[n] = recursiveFibonacci(cache, n - 1) + recursiveFibonacci(cache, n - 2);
-	}
-	return cache[n];
+    if (cache[n] == -1) {
+        cache[n] = recursiveFibonacci(cache, n - 1) + recursiveFibonacci(cache, n - 2);
+    }
+    return cache[n];
 }
 
 void printArray(long long unsigned *arr, int n) {
