@@ -76,9 +76,9 @@ void showListInverse(LinkedList *firstNode){
 int main(){
     LinkedList *first = NULL;
     srand(time(0));
-    int numberOfRandoms = 10;
+    int numberOfRandoms = 5;
 
-    for(int i=0;i<=numberOfRandoms;i++) // generate n random numbers
+    for(int i=0;i<numberOfRandoms;i++) // generate n random numbers
         first = insertNode(first,(rand()%1000));
 
     showList(first);
