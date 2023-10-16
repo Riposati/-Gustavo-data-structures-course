@@ -36,7 +36,42 @@ LinkedList *deleteNode(LinkedList *firstNode, int key){
     printf("key to be deleted from list -> (%d)\n",key);
 
     if(aux!=NULL){
-        // TODO
+        if(firstNode->key==key){ // first node
+        
+        aux = firstNode->next;
+        aux->before = firstNode->before;
+        firstNode->before->next=aux;
+        
+        if(firstNode->next==firstNode && firstNode->before==firstNode){ // if the list has only one node
+            free(firstNode);
+            firstNode = NULL;
+
+        }else{
+            free(firstNode);
+            firstNode = aux;
+        }
+
+    }else if(aux->next!=firstNode && aux->key!=key){
+
+            while(aux->key!=key && aux->next!=firstNode){
+                aux = aux->next;
+            }
+
+            if(aux->next!=firstNode && aux->key==key){ // node in the middle
+
+                LinkedList *aux2 = aux->before;
+                aux2->next=aux->next;
+                aux2->next->before=aux2;
+                free(aux);
+
+            }else if(aux->next==firstNode && aux->key==key){ // node in the end
+
+                LinkedList *aux2 = aux->before;
+                aux2->next = firstNode;
+                firstNode->before = aux2;
+                free(aux);
+            }
+        }
     }
     return firstNode;
 }
@@ -77,9 +112,21 @@ int main(){
     LinkedList *first = NULL;
     srand(time(0));
     int numberOfRandoms = 5;
+    int arrayOfRandoms[numberOfRandoms];
+    int random;
 
-    for(int i=0;i<numberOfRandoms;i++) // generate n random numbers
-        first = insertNode(first,(rand()%1000));
+    for(int i=0;i<numberOfRandoms;i++){ // generate n random numbers
+        random = rand()%10000;
+        first = insertNode(first,random);
+        arrayOfRandoms[i] = random;
+    }
+
+    showList(first);
+    showListInverse(first);
+
+    for(int i=0;i<rand()%numberOfRandoms;i++){
+        first = deleteNode(first, arrayOfRandoms[rand()%numberOfRandoms]);
+    }
 
     showList(first);
     showListInverse(first);

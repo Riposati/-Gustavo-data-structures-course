@@ -1,5 +1,6 @@
 #include<stdlib.h>
 #include<stdio.h>
+#include<time.h>
 
 struct linkedList{
     int key;
@@ -91,20 +92,22 @@ void showList(LinkedList *firstNode){
 int main(){
     LinkedList *first = NULL;
 
-    first = insertNode(first, 1);
-    first = insertNode(first, 2);
-    first = insertNode(first, 3);
-    first = insertNode(first, 4);
-    first = insertNode(first, 5);
-    first = insertNode(first, 6);
+    srand(time(0));
+    int numberOfRandoms = 5;
+    int arrayOfRandoms[numberOfRandoms];
+    int random;
+
+    for(int i=0;i<numberOfRandoms;i++){ // generate n random numbers
+        random = rand()%10000;
+        first = insertNode(first,random);
+        arrayOfRandoms[i] = random;
+    }
 
     showList(first);
 
-    first = deleteNode(first,1);
-    
-    showList(first);
-
-    first = deleteNode(first,3);
+    for(int i=0;i<rand()%numberOfRandoms;i++){
+        first = deleteNode(first, arrayOfRandoms[rand()%numberOfRandoms]);
+    }
 
     showList(first);
 
