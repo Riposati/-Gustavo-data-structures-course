@@ -14,16 +14,16 @@ int recursiveFibonacci(long long unsigned *cache, int n)
 }
 
 void printArray(long long unsigned *arr, int n) {
-	for (int i = 0; i < n; i++) {
-		printf(i == 0 ? "[ %llu" : ", %llu", arr[i]);
-	}
-	puts(" ]\n");
+    for (int i = 0; i < n; i++) {
+        printf(i == 0 ? "[ %llu" : ", %llu", arr[i]);
+    }
+    puts(" ]\n");
 }
 
 int main(void)
 {	
     int tests,n;
-    
+
     scanf("%d",&tests);
 
     // Initialise an array of N elements, each element set to -1
@@ -45,5 +45,5 @@ int main(void)
         count = 0;
         tests--;
     }
-	return 0;
+    return 0;
 }
