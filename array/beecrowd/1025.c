@@ -1,9 +1,9 @@
 #include <stdio.h>
 #include <stdlib.h>
-#include <algorithm>
-#include <iostream>
 
-using namespace std;
+int cmpfunc (const void * a, const void * b) {
+   return ( *(int*)a - *(int*)b );
+}
 
 int main(){
 
@@ -21,7 +21,7 @@ int main(){
             scanf("%d",&marbles[i]);
         }
 
-        sort(marbles, marbles + a);
+        qsort(marbles, a, sizeof(int), cmpfunc);
 
         printf("CASE# %d:\n",++countCase);
 
@@ -42,6 +42,7 @@ int main(){
             else
                 printf("%d found at %d\n",value,pos);
         }
+    
         scanf("%d %d",&a,&b);
     }
     return 0;
