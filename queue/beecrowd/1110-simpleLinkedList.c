@@ -39,26 +39,25 @@ void showList(LinkedList *first){
 }
   
 LinkedList *deleteNode(LinkedList *first){
-    if(first->next!=NULL){ /// se o proximo do inicio nao for nulo
+    if(first->next!=NULL){
   
-        LinkedList *aux = first; /// um aux = ini
+        LinkedList *aux = first;
     
-        LinkedList *aux2 = first->next; /// aux2 = o da frente do inicio
+        LinkedList *aux2 = first->next;
         first = first->next;
-        LinkedList *aux4 = first; /// o aux4 recebe o que deve ir para o fim da lista
+        LinkedList *aux4 = first;
     
         if(first->next==NULL)
             printf("%d",aux->key);
         else
-            printf("%d, ",aux->key); /// pra mostra os que foram desalocados
+            printf("%d, ",aux->key);
 
         free(aux);
     
         while(aux2->next!=NULL){
             aux2 = aux2->next;
-        } /// esse while e pra achar o ultimo
+        }
     
-        /// aqui movimento os dados ///
         if(first->next!=NULL){
             first = first->next;
             aux4->next=NULL;
